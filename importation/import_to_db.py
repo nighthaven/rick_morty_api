@@ -1,15 +1,8 @@
-import mysql.connector
+import sqlite3
 import json
+mydb = sqlite3.connect('rickmorty.db')
 
-
-mydb=mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="rootroot",
-    database="jellysmack_exam",
-    auth_plugin="mysql_native_password"
-)
-cursor=mydb.cursor()
+cursor = mydb.cursor()
 
 
 file_characters=open("importation/rick_morty_characters_v1.json")
@@ -51,6 +44,6 @@ sql_result_episodes=sql_base_episodes+", ".join(sql_values_episodes) +";"
 cursor.execute(sql_result_characters)
 cursor.execute(sql_result_episodes)
 
-mydb.commit()
-
 print(cursor.rowcount, "database imported")
+
+mydb.commit()

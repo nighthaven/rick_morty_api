@@ -1,13 +1,7 @@
-import mysql.connector
+import sqlite3
+mydb = sqlite3.connect('rickmorty.db')
 
-mydb=mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="rootroot",
-    database="jellysmack_exam",
-    auth_plugin="mysql_native_password"
-)
-cursor=mydb.cursor()
+cursor = mydb.cursor()
 
 cursor.execute("DROP TABLE IF EXISTS characters")
 cursor.execute("DROP TABLE IF EXISTS episodes")
@@ -30,6 +24,6 @@ cursor.execute("CREATE TABLE episodes(\
     charaters TEXT NOT NULL\
     )")
 
-mydb.commit()
-
 print("TABLE CREATED")
+
+mydb.commit()
