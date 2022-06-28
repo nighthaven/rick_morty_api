@@ -20,7 +20,7 @@ cursor.execute("CREATE TABLE episodes(\
     episode_id INT PRIMARY KEY NOT NULL,\
     ep_name VARCHAR(100) NOT NULL,\
     air_date VARCHAR(50) NOT NULL,\
-    episode VARCHAR(6) NOT NULL,\
+    episode_num VARCHAR(6) NOT NULL,\
     charaters TEXT NOT NULL\
     )")
 
