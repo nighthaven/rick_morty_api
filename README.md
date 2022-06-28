@@ -30,10 +30,15 @@ or follow https://www.servermania.com/kb/articles/install-sqlite/
     -overhall mysql allow me to do the job except it won't work in other computer who don't have the database, replace
     mysql solution by SQLite to have the database in the project directly. code remains the same for the biggest part. 
         - found harder to install SQLite on a mac when never used before. 
-02. create path listing episodes and a path listing the characters. ( started 18h20, finished ... tuesday)
-    - difficulty : again SQLite create an error (same thread) while using it with the dal/characters_dal
-    - solution : searching on internet to avoid this error and found check_same_thread=False 
 
+02. create path listing episodes and a path listing the characters. ( started 18h20, finished 19h tuesday)
+    - difficulty : again SQLite create an error (same thread) while using it with the dal/characters_dal
+    - solution : searching on internet to avoid this error and found check_same_thread = False 
+
+03. brainstorming about architecture tables of the crud comment : 
+    - will create a table user ( with id and user_name)
+    - will create a table comment linked to user_id foreign key, column character id, column episode_id, will index
+    - the CRUD will need to link all but if even if the character_id or episode_id can be null, both can't be null
 
 ## How to use this API
 
@@ -45,6 +50,10 @@ or follow https://www.servermania.com/kb/articles/install-sqlite/
     - this will import the json file in the table of the database.
     - if you need to see manually the database you can open the link :
     http://inloop.github.io/sqlite-viewer/ or use the module sqlite explorer on vscode.
+03. depending on where the API is tested, enter the host of the API and then
+    - enter the route "/" to see the root
+    - enter the route "/characters" to see the characters
+    - enter the route "/episodes" to see the episodes
 
 
 

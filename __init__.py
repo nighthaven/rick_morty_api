@@ -1,10 +1,12 @@
 from fastapi import FastAPI
 from path.character_path import path as path_characters
 from path.episodes_path import path as path_episodes
+from path.comments_path import path as path_comments
 
-app=FastAPI()
+app = FastAPI()
 app.include_router(path_characters)
 app.include_router(path_episodes)
+app.include_router(path_comments)
 
 @app.get("/")
 def root():
