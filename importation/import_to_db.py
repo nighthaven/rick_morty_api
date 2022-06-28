@@ -47,3 +47,5 @@ cursor.execute(sql_result_episodes)
 print(cursor.rowcount, "database imported")
 
 mydb.commit()
+
+#TODO "DATE_FORMAT(" + dictionary.get("air_date")+", %machin)",

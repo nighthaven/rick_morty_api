@@ -11,7 +11,7 @@ cursor.execute("CREATE TABLE characters(\
     charac_name VARCHAR(50) NOT NULL,\
     status VARCHAR(7) NOT NULL,\
     species VARCHAR(50) NOT NULL,\
-    type VARCHAR(50),\
+    charac_type VARCHAR(50),\
     gender VARCHAR(10) NOT NULL,\
     charac_ep VARCHAR(255) NOT NULL\
     )")
