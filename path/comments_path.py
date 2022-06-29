@@ -38,4 +38,10 @@ def get_comments_by_character_in_episode(character_id:int,episode_id:int)-> list
         raise HTTPException(status.HTTP_404_NOT_FOUND, detail="id must not be blank")
     return comments_dal.get_comments_by_character_in_episode(character_id,episode_id)
 
+@path.get("/comments/filter={message}")
+def get_comments_by_filter_message(message:str)-> list[Comment]:
+    if not message:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, detail="Filter can't be empty")
+    return comments_dal.get_comments_by_filter_message(message)
+
 

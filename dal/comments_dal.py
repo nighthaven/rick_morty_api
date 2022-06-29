@@ -12,8 +12,12 @@ def create_comment(comment:Comment) -> None:
 def edit_comment(comment_id:int,comment:Comment)-> None:
     connection = get_connection()
     cursor = connection.cursor()
-    edit_comment = "UPDATE comments SET character_id=%s, episode_id=%s, message='%s' WHERE comment_id=%s;" \
-    % (comment.character_id,comment.episode_id,comment.message,comment_id)
+    edit_comment = "UPDATE comments SET user_id=%s, character_id=%s, episode_id=%s, message='%s' WHERE comment_id=%s;" \
+    % (comment.user_id or "1", 
+    comment.character_id or "Null",
+    comment.episode_id or "Null",
+    comment.message or "inserez votre message",
+    comment_id)
     cursor.execute(edit_comment)
     connection.commit()
 
@@ -59,3 +63,10 @@ def get_comments_by_character_in_episode(character_id:int,episode_id:int)-> list
     query_comments = cursor.fetchall()
     return query_comments
 
+def get_comments_by_filter_message(message:str)-> list[Comment]:
+    connection = get_connection()
+    cursor = connection.cursor()
+    query_comments_by_filter_message="SELECT * FROM comments WHERE message LIKE '%s'" % ("%"+message+"%")
+    cursor.execute(query_comments_by_filter_message)
+    query_comments = cursor.fetchall()
+    return query_comments
