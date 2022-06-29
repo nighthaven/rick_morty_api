@@ -40,6 +40,15 @@ or follow https://www.servermania.com/kb/articles/install-sqlite/
     - will create a table comment linked to user_id foreign key, column character id, column episode_id, will index
     - the CRUD will need to link all but if even if the character_id or episode_id can be null, both can't be null
 
+04. Creation of the comment table and user table, creation of the path and the post creation of the comment
+    - Difficulty : needed more documentation about pydantic (validator),
+                   when return None, the database doesn't understand
+                   concerning the edit i pass for now, we need user authentification so the SQL can remain it in order to do so. ( code is still written for futur modification)
+    - solution : learn pydantic validator's syntaxe
+                 add or "Null" value for creation
+                 
+
+
 ## How to use this API
 
 ### the import folder
