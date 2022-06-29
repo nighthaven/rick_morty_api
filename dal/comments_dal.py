@@ -24,6 +24,16 @@ def delete_comment(comment_id:int)-> None:
     cursor.execute(delete_comment)
     connection.commit()
 
+def get_comments(in_progress:int, max_display:int) -> list[Comment]:
+    start = (in_progress * max_display) - max_display
+    connection = get_connection()
+    cursor = connection.cursor()
+    query_comments=("SELECT * FROM comments LIMIT %s OFFSET %s") % (max_display, start)
+    cursor.execute(query_comments)
+    data_comments = cursor.fetchall()
+    return data_comments    
+
+
 def get_comments_by_episode(episode_id:int)-> list[Comment]:
     connection = get_connection()
     cursor = connection.cursor()
@@ -48,3 +58,4 @@ def get_comments_by_character_in_episode(character_id:int,episode_id:int)-> list
     cursor.execute(query_comments_by_character_in_episode)
     query_comments = cursor.fetchall()
     return query_comments
+

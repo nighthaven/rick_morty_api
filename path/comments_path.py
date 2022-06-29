@@ -1,4 +1,4 @@
-from fastapi import APIRouter, status, HTTPException
+from fastapi import APIRouter, Query, status, HTTPException
 from models.comment_models import Comment
 from dal import comments_dal
 
@@ -15,6 +15,10 @@ def edit_comment(comment_id:int,comment:Comment)-> None:
 @path.delete("/comments/{comment_id}")
 def delete_comment(comment_id:int)-> None:
     comments_dal.delete_comment(comment_id)
+
+@path.get("/comments")
+def get_comments(in_progress:int=Query(1), max_display:int=Query(5))->list[Comment]:
+    return comments_dal.get_comments(in_progress, max_display)
 
 @path.get("/comments/ep={episode_id}")
 def get_comments_by_episode(episode_id:int)-> list[Comment]:
@@ -33,3 +37,5 @@ def get_comments_by_character_in_episode(character_id:int,episode_id:int)-> list
     if not episode_id or not character_id:
         raise HTTPException(status.HTTP_404_NOT_FOUND, detail="id must not be blank")
     return comments_dal.get_comments_by_character_in_episode(character_id,episode_id)
+
+
