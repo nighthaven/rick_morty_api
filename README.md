@@ -12,6 +12,8 @@ Rick&Morty.
 
 Python 3.7+ is needed (i use python 3.9.7).
 FastAPI
+uvicorn
+pydantic
 
 SQLite need to be installed follow the download and install process at this link https://www.sqlite.org
 or follow https://www.servermania.com/kb/articles/install-sqlite/ 
@@ -46,9 +48,12 @@ or follow https://www.servermania.com/kb/articles/install-sqlite/
                    concerning the edit i pass for now, we need user authentification so the SQL can remain it in order to do so. ( code is still written for futur modification)
     - solution : learn pydantic validator's syntaxe
                  add or "Null" value for creation
+                
+05. create page was not difficult, create a filter with LIKE was easy to find.
+
+06. took the time to read documentation, and decide to modify the path to get_comment_by_chatacter_in_episode
+by a query ( just to know that well, i know)
                  
-
-
 ## How to use this API
 
 ### the import folder
@@ -59,10 +64,22 @@ or follow https://www.servermania.com/kb/articles/install-sqlite/
     - this will import the json file in the table of the database.
     - if you need to see manually the database you can open the link :
     http://inloop.github.io/sqlite-viewer/ or use the module sqlite explorer on vscode.
-03. depending on where the API is tested, enter the host of the API and then
+
+### installing all module
+
+01. don't hesitate to install the requirement creating a virtual environnement
+
+02. depending on where the API is tested, enter the host of the API and then
     - enter the route "/" to see the root
-    - enter the route "/characters" to see the characters
-    - enter the route "/episodes" to see the episodes
 
+03.searching the route
+- enter in the URL "/characters" to see the characters
+- enter in the URL "/episodes" to see the episodes
+- enter in the URL "/comment" to see the comment
+- enter in the URL "/comment/idOfTheComment" to see the comment by id
+- enter in the URL "/comments/ch=idOfTheCharacter" to see the comment by character
+- enter in the URL "/comments/ch=idOfTheCharacter?episode_id=idOfTheEpisode" to see the comment by character in episode
+- enter in the URL "/comments/filter=typeWhatYouWant" to filter the comment by what you want
 
-
+04. adding, deleting or update
+- use /docs to do so

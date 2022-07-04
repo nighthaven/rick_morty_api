@@ -32,9 +32,9 @@ def get_comments_by_character(character_id:int)-> list[Comment]:
         raise HTTPException(status.HTTP_404_NOT_FOUND, detail="id must not be blank")
     return comments_dal.get_comments_by_character(character_id)
 
-@path.get("/comments/ch={character_id}/ep={episode_id}")
+@path.get("/comments/ch={character_id}")
 def get_comments_by_character_in_episode(character_id:int,episode_id:int)-> list[Comment]:
-    if not episode_id or not character_id:
+    if not character_id:
         raise HTTPException(status.HTTP_404_NOT_FOUND, detail="id must not be blank")
     return comments_dal.get_comments_by_character_in_episode(character_id,episode_id)
 
