@@ -13,6 +13,7 @@ def create_comment(comment:Comment, current_user:users_models.User = Depends(get
 
 @path.put("/comments/{comment_id}")
 def edit_comment(comment_id:int,comment:Comment, current_user:users_models.User = Depends(get_current_user))-> None:
+    comment.user_id = current_user.user_id
     comments_dal.edit_comment(comment_id,comment)
 
 @path.delete("/comments/{comment_id}")

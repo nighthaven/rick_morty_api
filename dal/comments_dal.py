@@ -12,8 +12,8 @@ def create_comment(comment:Comment) -> None:
 def edit_comment(comment_id:int,comment:Comment)-> None:
     connection = get_connection()
     cursor = connection.cursor()
-    edit_comment = "UPDATE comments SET user_id=%s, character_id=%s, episode_id=%s, message='%s' WHERE comment_id=%s;" \
-    % (comment.user_id or "1", 
+    edit_comment = "UPDATE comments SET character_id=%s, episode_id=%s, message='%s' WHERE comment_id=%s;" \
+    % (
     comment.character_id or "Null",
     comment.episode_id or "Null",
     comment.message or "inserez votre message",
