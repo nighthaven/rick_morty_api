@@ -1,11 +1,9 @@
 from  pydantic import BaseModel, Field, validator, ValidationError
 from typing import Optional
 
-from sqlalchemy import null
-
 class Comment(BaseModel):
     comment_id:Optional[int] = Field()
-    user_id:int = Field(...)
+    user_id:Optional[int] = Field()
     character_id:Optional[int] = Field()
     episode_id:Optional[int] = Field()
     message:str = Field(...)

@@ -29,11 +29,14 @@ cursor.execute("CREATE TABLE episodes(\
 
 cursor.execute("CREATE TABLE users(\
     user_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,\
-    user_name VARCHAR(100) NOT NULL)")
+    user_name VARCHAR(100) NOT NULL UNIQUE,\
+    user_type VARCHAR(50) NOT NULL,\
+    user_password VARCHAR(250) NOT NULL)")
+    
 
 cursor.execute("CREATE TABLE comments(\
     comment_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,\
-    user_id INTEGER NOT NULL,\
+    user_id INT NOT NULL,\
     character_id INTEGER,\
     episode_id INTEGER,\
     message TEXT NOT NULL,\

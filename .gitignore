@@ -1,11 +1,5 @@
+env
+.vscode
 .DS_Store
-path/__pycache__/__init__.cpython-39.pyc
-path/__pycache__/character_path.cpython-39.pyc
-models/__pycache__/characters_models.cpython-39.pyc
-dal/__pycache__/connexion_helper.cpython-39.pyc
-dal/__pycache__/connexion_shortcut.cpython-39.pyc
-dal/__pycache__/characters_dal.cpython-39.pyc
-.vscode/launch.json
-path/__pycache__/comments_path.cpython-39.pyc
-models/__pycache__/comment_models.cpython-39.pyc
-dal/__pycache__/comments_dal.cpython-39.pyc
+**/__pycache__/*
+__pycache__/*

@@ -1,19 +1,22 @@
-from fastapi import APIRouter, Query, status, HTTPException
+from fastapi import APIRouter, Depends, Query, status, HTTPException
 from models.comment_models import Comment
+from models import users_models
 from dal import comments_dal
+from path.login_path import get_current_user
 
 path = APIRouter()
 
 @path.post("/comments",status_code = status.HTTP_201_CREATED)
-def create_comment(comment:Comment) -> None:
+def create_comment(comment:Comment, current_user:users_models.User = Depends(get_current_user)) -> None:
+    comment.user_id = current_user.user_id
     comments_dal.create_comment(comment)
 
 @path.put("/comments/{comment_id}")
-def edit_comment(comment_id:int,comment:Comment)-> None:
+def edit_comment(comment_id:int,comment:Comment, current_user:users_models.User = Depends(get_current_user))-> None:
     comments_dal.edit_comment(comment_id,comment)
 
 @path.delete("/comments/{comment_id}")
-def delete_comment(comment_id:int)-> None:
+def delete_comment(comment_id:int, current_user:users_models.User = Depends(get_current_user))-> None:
     comments_dal.delete_comment(comment_id)
 
 @path.get("/comments")
