@@ -5,10 +5,10 @@ mydb = sqlite3.connect('rickmorty.db')
 cursor = mydb.cursor()
 
 
-file_characters = open("importation/rick_morty_characters_v1.json")
+file_characters = open("database/importation/rick_morty_characters_v1.json")
 data_characters = json.load(file_characters)
 
-file_episodes = open("importation/rick_morty_episodes_v1.json")
+file_episodes = open("database/importation/rick_morty_episodes_v1.json")
 data_episodes = json.load(file_episodes)
 
 cursor.execute("DELETE FROM characters")

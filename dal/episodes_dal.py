@@ -1,9 +1,10 @@
-from models.episodes_models import Episode
-from dal.connexion_helper import get_connection
+from fastapi.params import Depends
+from database.database import get_db
+from sqlalchemy.orm import Session
+from database import to_db
 
+def get_episodes(db: Session = Depends(get_db)):
+    episodes = db.query(to_db.episodes).all()
+    return episodes
 
-def get_episodes() -> list[Episode]:
-    cursor = get_connection().cursor()
-    cursor.execute("SELECT * FROM episodes")
-    query_episodes = cursor.fetchall()
-    return query_episodes
+    

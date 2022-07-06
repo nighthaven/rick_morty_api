@@ -1,8 +1,11 @@
+from fastapi import APIRouter
+from dal import characters_dal
 from fastapi.params import Depends
 from database.database import get_db
 from sqlalchemy.orm import Session
-from database import to_db
 
+path = APIRouter()
+
+@path.get('/characters')
 def get_characters(db: Session = Depends(get_db)):
-    characters = db.query(to_db.Characters).all()
-    return characters
+    return characters_dal.get_characters(db)

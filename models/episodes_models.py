@@ -1,8 +1,8 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 class Episode(BaseModel):
-    episode_id:int = Field(...)
-    ep_name:str = Field(...)
-    air_date:str = Field(...)
-    epidose_num:str = Field(...)
-    characters:str = Field(...)
+    episode_id:int
+    ep_name:str
+    air_date:str
+    episode_num:str
+    characters:str

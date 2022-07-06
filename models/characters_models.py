@@ -1,11 +1,10 @@
-from pydantic import BaseModel,Field
+from pydantic import BaseModel
 
-class Character(BaseModel):
-    character_id:int = Field(...)
-    charac_name:str = Field(...)
-    status:str = Field(...)
-    species:str = Field(...)
-    charac_type:str = Field(...)
-    gender:str = Field(...)
-    charac_ep:str = Field(...)
-
+class character(BaseModel):
+    character_id:int
+    charac_name:str
+    status:str
+    species:str
+    charac_type:str
+    gender:str
+    charac_ep:str
