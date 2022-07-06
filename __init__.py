@@ -4,6 +4,7 @@ from path.episodes_path import path as path_episodes
 from path.comments_path import path as path_comments
 from path.users_path import path as path_user
 from path.login_path import path as path_login
+from export.export_comment import path as path_export
 
 app = FastAPI()
 app.include_router(path_characters)
@@ -11,6 +12,7 @@ app.include_router(path_episodes)
 app.include_router(path_comments)
 app.include_router(path_user)
 app.include_router(path_login)
+app.include_router(path_export)
 
 @app.get("/")
 def root():
