@@ -1,4 +1,4 @@
-from fastapi import APIRouter,status
+from fastapi import APIRouter,status, Query
 from dal import comments_dal
 from fastapi.params import Depends
 from database.database import get_db
@@ -22,8 +22,8 @@ def delete_comment(id:int, db: Session = Depends(get_db)):
     return comments_dal.delete_comment(id,db)
 
 @path.get("/comments")
-def get_comments(db: Session = Depends(get_db)):
-    return comments_dal.get_comments(db)
+def get_comments(start:int = Query(1), max_display:int=Query(5), db: Session = Depends(get_db)):
+    return comments_dal.get_comments(start, max_display, db)
 
 @path.get("/comments/character={id}")
 def get_comments_by_character(id, db: Session = Depends(get_db)):
@@ -37,4 +37,8 @@ def get_comments_by_episode(episode_id:int, db: Session = Depends(get_db)):
 @path.get("/comments/character={id}/by")
 def get_comments_by_character_in_episode(id:int,episode:int, db: Session = Depends(get_db)):
     return comments_dal.get_comments_by_character_in_episode(id,episode,db)
+
+@path.get("/comments/filter={message}")
+def get_comments_by_filter(message:str, db: Session = Depends(get_db)):
+    return comments_dal.get_comments_by_filter(message,db)
 

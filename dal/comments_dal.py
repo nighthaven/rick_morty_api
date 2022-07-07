@@ -6,7 +6,6 @@ from models import comments_models
 from database import to_db
 
 
-
 def add_comment(request:comments_models.Comment , db: Session = Depends(get_db)):
     new_comment = to_db.Comments(
         comment_id=request.comment_id, 
@@ -34,9 +33,11 @@ def delete_comment(id:int, db: Session = Depends(get_db)):
     db.commit()
     return "comment deleted"
 
-def get_comments(db: Session = Depends(get_db)):
-    comments = db.query(to_db.Comments).all()
-    return comments
+def get_comments(start:int, max_display:int, db: Session = Depends(get_db)):
+    return db.query(to_db.Comments)\
+    .limit(max_display)\
+    .offset((start*max_display)-max_display)\
+    .all()
 
 def get_comments_by_character(id, db: Session = Depends(get_db)):
     comments = db.query(to_db.Comments).filter(to_db.Comments.character_id == id).all()
@@ -54,4 +55,10 @@ def get_comments_by_character_in_episode(id:int,episode:int, db: Session = Depen
     comments = db.query(to_db.Comments).filter(to_db.Comments.character_id == id).filter(to_db.Comments.episode_id == episode).all()
     if not comments:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail="comment(s) not found")
-    return comments    
+    return comments
+
+def get_comments_by_filter(message:str, db: Session = Depends(get_db)):
+    comments = db.query(to_db.Comments).filter(to_db.Comments.message.like("%"+message+"%")).all()
+    if not comments:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail="comment(s) not found")
+    return comments
