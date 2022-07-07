@@ -1,12 +1,15 @@
 from fastapi import FastAPI
-from path.characters_path import path as path_character
-from path.episodes_path import path as path_episode
+from path.characters_path import path as path_characters
+from path.episodes_path import path as path_episodes
+from path.comments_path import path as path_comments
 from database import to_db
 from database.database import engine
 
+
 app=FastAPI()
-app.include_router(path_character)
-app.include_router(path_episode)
+app.include_router(path_characters)
+app.include_router(path_episodes)
+app.include_router(path_comments)
 
 to_db.Base.metadata.create_all(engine)
 

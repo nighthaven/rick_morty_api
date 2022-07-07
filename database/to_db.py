@@ -12,7 +12,7 @@ class Characters(Base):
     gender = Column(String)
     charac_ep = Column(String)
 
-class episodes(Base):
+class Episodes(Base):
     __tablename__ = "episodes"
     episode_id	= Column(Integer, primary_key=True, index=True)
     ep_name = Column(String)
@@ -20,7 +20,7 @@ class episodes(Base):
     episode_num = Column(String)
     charaters = Column(String)
 
-class comments(Base):
+class Comments(Base):
     __tablename__ = "comments"
     comment_id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey('users.user_id'))
