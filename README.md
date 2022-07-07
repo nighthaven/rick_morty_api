@@ -38,7 +38,7 @@ or follow https://www.servermania.com/kb/articles/install-sqlite/
     - solution : searching on internet to avoid this error and found check_same_thread = False 
 
 03. brainstorming about architecture tables of the crud comment : 
-    - will create a table user ( with id and user_name)
+    - will create a table user ( with id and username)
     - will create a table comment linked to user_id foreign key, column character id, column episode_id, will index
     - the CRUD will need to link all but if even if the character_id or episode_id can be null, both can't be null
 

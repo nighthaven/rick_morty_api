@@ -31,6 +31,6 @@ class Comments(Base):
 class Users(Base):
     __tablename__ = "users"
     user_id = Column(Integer, primary_key=True, index=True)
-    user_name = Column(String)
+    username = Column(String)
     user_type = Column(String)
-    user_password = Column(String)
+    password = Column(String)
