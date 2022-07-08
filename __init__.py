@@ -4,6 +4,7 @@ from path.episodes_path import path as path_episodes
 from path.comments_path import path as path_comments
 from path.users_path import path as path_users
 from path.login_path import path as path_login
+from export.export import path as path_export
 from database import to_db
 from database.database import engine
 
@@ -15,6 +16,7 @@ app.include_router(path_episodes)
 app.include_router(path_comments)
 app.include_router(path_users)
 app.include_router(path_login)
+app.include_router(path_export)
 
 to_db.Base.metadata.create_all(engine)
 

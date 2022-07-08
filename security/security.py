@@ -12,7 +12,7 @@ from models.token_models import TokenData
 
 SECRET_KEY = "9ae820b69efb998332d7766567e1239578cf4405d4979de57e4bae7750312909"
 ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 20
+ACCESS_TOKEN_EXPIRE_MINUTES = 1200
 
 router=APIRouter()
 
@@ -56,6 +56,5 @@ def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(
     if user is None:
         raise credentials_exception
     return user
-
 
 

@@ -8,7 +8,7 @@ from security.security import get_current_user
 from models.users_models import User
 
 
-def add_comment(request:comments_models.Comment , db: Session = Depends(get_db), current_user:User = Depends(get_current_user)):
+def add_comment(request:comments_models.Comment , db: Session = Depends(get_db),current_user:User = Depends(get_current_user)):
     new_comment = to_db.Comments(
         comment_id=request.comment_id, 
         user_id=current_user.user_id,
@@ -31,7 +31,8 @@ def update_comment(id:int, request:comments_models.Comment, db: Session = Depend
     return "comment successfully updated"
 
 def delete_comment(id:int, db: Session = Depends(get_db), current_user:User = Depends(get_current_user)):
-    db.query(to_db.Comments).filter(to_db.Comments.comment_id == id).delete(synchronize_session=False)
+    comment_to_delete = db.query(to_db.Comments).filter(to_db.Comments.comment_id == id)
+    comment_to_delete.delete(synchronize_session=False)
     db.commit()
     return "comment deleted"
 

@@ -27,6 +27,7 @@ class Comments(Base):
     character_id = Column(Integer)
     episode_id = Column(Integer)
     message = Column(String)
+    user = relationship("Users", back_populates="comment")
 
 class Users(Base):
     __tablename__ = "users"
@@ -34,3 +35,4 @@ class Users(Base):
     username = Column(String)
     user_type = Column(String)
     password = Column(String)
+    comment = relationship("Comments", back_populates="user")
