@@ -53,6 +53,12 @@ or follow https://www.servermania.com/kb/articles/install-sqlite/
 
 06. took the time to read documentation, and decide to modify the path to get_comment_by_chatacter_in_episode
 by a query ( just to know that well, i know)
+
+07. added security login, this part is definitively the most complicated part
+
+08. added export route (easy), a simple search on google show me the way
+
+09. just discovered sqlalchemy and decide to refactor with it 
                  
 ## How to use this API
 
