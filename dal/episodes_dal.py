@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from database import to_db
 
 def get_episodes(db: Session = Depends(get_db)):
-    episodes = db.query(to_db.episodes).all()
+    episodes = db.query(to_db.Episodes).all()
     return episodes
 
     
